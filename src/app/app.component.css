@@ -1,0 +1,13 @@
+canvas{
+    position: absolute;
+    top : -100%
+}
+
+.videoAndPub{
+    display: flex;
+}
+
+.attendanceAndAge{
+    display: flex;
+}
+

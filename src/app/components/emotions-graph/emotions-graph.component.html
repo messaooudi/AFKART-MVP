@@ -1,0 +1,7 @@
+<div>
+  <canvas width="400px" height="300px" baseChart [chartType]="'pie'" [datasets]="chartData" [labels]="labels" [options]="chartOptions"
+    [legend]="true" [colors]="colors">
+  </canvas>
+  <input type="number" min="1" [(ngModel)]="minutes">
+  <span>Minutes</span>
+</div>
