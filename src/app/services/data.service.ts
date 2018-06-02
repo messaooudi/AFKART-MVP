@@ -57,6 +57,8 @@ export class DataService {
 
 export class Persone {
   faceId: string;
+  nom : string;
+  prenom:string;
   gender: string;
   age: number;
   emotions: Array<Emotion> = new Array<Emotion>();

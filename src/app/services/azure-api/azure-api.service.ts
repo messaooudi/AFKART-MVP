@@ -30,30 +30,33 @@ export class AzureApiService {
   }
 
   analyseFace(image: any) {
-    this.azureKeys[this.counter].counter++;
-    console.log("    |-> findSimilar  - key " + this.counter+"  -> " + this.azureKeys[this.counter].counter);
+    //this.azureKeys[this.counter].counter++;
+    console.log("|-> analyseFace  - key " + this.counter)//+"  -> " + this.azureKeys[this.counter].counter);
     const headers = new HttpHeaders({
       'Content-Type': 'application/octet-stream',
       'Ocp-Apim-Subscription-Key': this.azureKeys[0].key1
     })
-    this.counter = (this.counter + 1) % this.azureKeys.length
+    this.counter++// = (this.counter + 1) % this.azureKeys.length
     return this.http.post(`${this.endpoint}/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,emotion`,
       image,
       { headers: headers }
     );
   }
 
-  findSimilar(faceId: string, faceIds: Array<string>) {
-    this.azureKeys[1].counter++;
-    console.log("    |-> findSimilar " + new Date().toISOString().slice(-13, -5) + " :" + this.azureKeys[1].counter);
+  findSimilar(faceId: string = '', faceIds: string[] = []) {
+    //this.azureKeys[1].counter++;
+    console.log("    |-> findSimilar  - key " + this.counter+" | "+faceId+" "+faceIds.length)//+"  -> " + this.azureKeys[this.counter].counter);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Ocp-Apim-Subscription-Key': this.azureKeys[0].key1
     })
+    this.counter++;
     return this.http.post(`${this.endpoint}/findsimilars`,
       {
-        faceId,
-        faceIds: faceIds
+        'faceId':faceId,
+        'faceIds': [...faceIds],
+        //'faceListId': null,
+        //'largeFaceListId': null
       },
       { headers }
     )

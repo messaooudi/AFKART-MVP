@@ -5,8 +5,8 @@ export class ImageFactoryService {
   video: any;
   canvas: any;
 
-  width = 1 * 600;
-  height = 1 * 463;
+  width = 1 * 400;
+  height = 1 * 300;
   constructor() {
     //createElement('video');
     this.canvas = document.createElement('canvas');
