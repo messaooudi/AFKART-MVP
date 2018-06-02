@@ -5,6 +5,7 @@ export class FacestoreService {
     knownFaces: Face[] = [];
     constructor() {
         this.knownFaces = JSON.parse(localStorage.getItem('knownFaces')) || [];
+        console.log(this.knownFaces)
     }
 
     get faceIds(): string[] {
@@ -19,13 +20,9 @@ export class FacestoreService {
                 prenom
             }
         )
+        localStorage.removeItem('knownFaces')
         localStorage.setItem('knownFaces', JSON.stringify(this.knownFaces));
     }
-
-    isKnownFace(faceId: String) {
-        return this.knownFaces.find(face => face.faceId === faceId);
-    }
-
 }
 
 export interface Face {

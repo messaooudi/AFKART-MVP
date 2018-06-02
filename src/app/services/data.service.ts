@@ -37,7 +37,7 @@ export class DataService {
           }
           this.persones.push(persone);
           this.stream.next(this.persones);
-          localStorage.clear()
+          localStorage.removeItem('persones')
           localStorage.setItem('persones', JSON.stringify(this.persones))
         },
         error => console.log(JSON.stringify(error))
@@ -45,7 +45,7 @@ export class DataService {
     } else {
       this.persones.push(persone);
       this.stream.next(this.persones);
-      localStorage.clear()
+      localStorage.removeItem('persones')
       localStorage.setItem('persones', JSON.stringify(this.persones))
     }
   }
